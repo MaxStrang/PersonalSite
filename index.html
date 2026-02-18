@@ -89,29 +89,21 @@
 
     /* Soft edge glow that subtly travels around the card border */
     .card::before {
-      content: "";
-      position: absolute;
-      inset: -1px;
-      border-radius: calc(var(--radius) + 2px);
-      padding: 1px; /* for gradient edge */
-      background:
-        conic-gradient(
-          from 0deg,
-          color-mix(in oklab, var(--brand) 68%, transparent) 0deg,
-          rgba(255,255,255,0.07) 90deg,
-          color-mix(in oklab, var(--brand) 40%, transparent) 180deg,
-          rgba(255,255,255,0.07) 270deg,
-          color-mix(in oklab, var(--brand) 68%, transparent) 360deg
-        );
-      -webkit-mask:
-        linear-gradient(#000 0 0) content-box,
-        linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor;
-              mask-composite: exclude;
-      animation: edge-rotate var(--shine-duration) linear infinite;
-      opacity: var(--glow-opacity);
-      pointer-events: none;
-    }
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+
+  border: 2px solid var(--brand);
+  box-shadow:
+    0 0 8px var(--brand),
+    0 0 18px color-mix(in oklab, var(--brand) 70%, transparent),
+    inset 0 0 12px color-mix(in oklab, var(--brand) 35%, transparent);
+
+  opacity: .9;
+}
+
 
     /* Gentle outward glow */
     .card::after {
@@ -286,7 +278,7 @@
       </header>
 
       <div class="intro" id="intro">
-        <p>I'm a developer working primarily with embedded software and connected systems, turning hardware and cloud services into cohesive, usable products.</p>
+        <p>I'm a software developer @ Knightec Group, working primarily with embedded software and connected systems, turning hardware and cloud services into cohesive, usable products.</p>
         <p>My day-to-day work spans everything from low-level device code to backend APIs and web frontends, depending on what the system needs most.</p>
         <p>I like designing end-to-end solutions where devices, services, and interfaces work together smoothly and securely.</p>
         <p>I focus on robustness and simplicity, aiming for implementations that are easy to understand, test, and maintain.</p>
