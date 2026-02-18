@@ -67,25 +67,35 @@
 
     /* ========== Card with animated tint & edge shine ========== */
     .card {
-      position: relative;
-      width: 100%;
-      max-width: var(--maxw);
-      border-radius: var(--radius);
-      overflow: clip; /* for inner effects */
-      box-shadow: var(--shadow);
-      padding: clamp(20px, 4vw, 42px);
-      isolation: isolate; /* keeps pseudo elements inside */
-      border: 1px solid color-mix(in oklab, var(--fg) 10%, transparent);
-      background: linear-gradient(
-        135deg,
-        color-mix(in oklab, var(--card) 88%, black) 0%,
-        color-mix(in oklab, var(--card) 88%, black) 40%,
-        color-mix(in oklab, var(--brand) 6%, var(--card)) 100%
-      );
-      /* slow “breathing” change in orange/black balance */
-      animation: breath var(--breath-duration) ease-in-out infinite;
-      backdrop-filter: saturate(140%) blur(6px);
-    }
+        position: relative;
+        width: 100%;
+        max-width: var(--maxw);
+        border-radius: var(--radius);
+        padding: clamp(20px, 4vw, 42px);
+        box-shadow: var(--shadow);
+        isolation: isolate;
+
+        /* Animated glow gradient background */
+        background: linear-gradient(
+            135deg,
+            hsl(220 30% 10%) 0%,
+            hsl(220 35% 14%) 40%,
+            hsl(28 90% 22%) 70%,
+            hsl(220 35% 12%) 100%
+        );
+        background-size: 200% 200%;
+        animation: card-glow-shift 18s ease-in-out infinite;
+
+        border: 1px solid hsl(28 100% 55% / 0.22);
+
+        box-shadow:
+            0 0 28px hsl(28 100% 55% / 0.10),
+            inset 0 1px 0 hsl(28 100% 70% / 0.18),
+            inset 0 -8px 32px rgba(0,0,0,.35);
+
+        backdrop-filter: blur(6px) saturate(140%);
+        }
+
 
     /* Soft edge glow that subtly travels around the card border */
     .card::before {
