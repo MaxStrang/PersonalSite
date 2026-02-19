@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Max Strang</title>
-  <meta name="description" content="Personal webpage for Max Strang — software engineer focusing on embedded programming, full-stack development, and device-to-cloud systems." />
+  <meta name="description" content="Software engineer working with embedded systems and connected products." />
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,30 +21,58 @@
 
     * { box-sizing: border-box; }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       background: var(--bg);
       color: var(--fg);
-      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      font-family: "Inter", system-ui, sans-serif;
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
     }
 
-    .wrap {
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 120px 40px;
-    }
+    /* ---------- NAV ---------- */
 
-    header {
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px 40px;
+      background: rgba(11,13,16,0.8);
+      backdrop-filter: blur(8px);
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      gap: 80px;
+      align-items: center;
+      z-index: 100;
     }
 
-    .title-block {
-      max-width: 620px;
+    nav .logo {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+      margin-left: 28px;
+      font-weight: 500;
+      transition: .2s ease;
+    }
+
+    nav a:hover {
+      color: var(--brand);
+    }
+
+    /* ---------- SECTIONS ---------- */
+
+    section {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 140px 40px;
     }
 
     h1 {
@@ -53,6 +81,12 @@
       margin: 0;
       font-weight: 800;
       letter-spacing: -0.03em;
+    }
+
+    h2 {
+      font-size: 32px;
+      margin-bottom: 40px;
+      letter-spacing: -0.02em;
     }
 
     .subtitle {
@@ -65,12 +99,23 @@
     .intro {
       margin-top: 40px;
       font-size: 18px;
-      color: var(--fg);
+      max-width: 640px;
     }
 
     .intro p {
-      margin: 0 0 18px;
       color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    /* ---------- HERO LAYOUT ---------- */
+
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 80px;
+      min-height: 100vh;
+      padding-top: 160px;
     }
 
     .avatar {
@@ -89,24 +134,41 @@
       filter: grayscale(10%) contrast(105%);
     }
 
-    .actions {
-      margin-top: 40px;
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
+    /* ---------- SKILLS ---------- */
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 40px;
     }
 
-    .btn {
+    .skill-card {
+      border-top: 2px solid var(--brand);
+      padding-top: 20px;
+    }
+
+    .skill-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .skill-card p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* ---------- CONTACT ---------- */
+
+    .contact a {
+      display: inline-block;
+      margin-top: 10px;
       text-decoration: none;
       color: var(--fg);
       font-weight: 600;
-      font-size: 15px;
       position: relative;
       padding-bottom: 4px;
-      transition: .2s ease;
     }
 
-    .btn::after {
+    .contact a::after {
       content: "";
       position: absolute;
       left: 0;
@@ -117,33 +179,33 @@
       transition: width .25s ease;
     }
 
-    .btn:hover {
+    .contact a:hover {
       color: var(--brand);
     }
 
-    .btn:hover::after {
+    .contact a:hover::after {
       width: 100%;
     }
 
     footer {
-      margin-top: 120px;
-      font-size: 14px;
+      text-align: center;
+      padding: 60px 20px;
       color: var(--muted);
+      font-size: 14px;
     }
 
     @media (max-width: 900px) {
-      header {
+      .hero {
         flex-direction: column;
-        gap: 60px;
+        align-items: flex-start;
       }
 
-      .avatar {
-        width: 180px;
-        height: 220px;
+      nav {
+        padding: 20px;
       }
 
-      .wrap {
-        padding: 80px 28px;
+      section {
+        padding: 120px 24px;
       }
     }
 
@@ -151,47 +213,80 @@
 </head>
 
 <body>
-  <main class="wrap">
-    <header>
-      <div class="title-block">
-        <h1>Max Strang</h1>
-        <div class="subtitle">Software Engineer — Västerås</div>
 
-        <div class="intro">
-          <p>
-            I'm a software developer at Knightec Group, working primarily with embedded software and connected systems.
-          </p>
-          <p>
-            My work spans low-level device programming, backend services, and web interfaces — building cohesive products from hardware to cloud.
-          </p>
-          <p>
-            I focus on robust architecture, thoughtful abstractions, and scalable systems that are easy to understand and maintain.
-          </p>
-        </div>
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="logo">Max Strang</div>
+    <div>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
 
-        <div class="actions">
-          <a class="btn" href="https://www.linkedin.com/in/maxstrang/" target="_blank" rel="noopener noreferrer">
-            LinkedIn
-          </a>
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <h1>Max Strang</h1>
+      <div class="subtitle">Software Engineer — Västerås</div>
 
-          <a class="btn" href="mailto:maxstraang@outlook.com">
-            Email
-          </a>
-        </div>
+      <div class="intro">
+        <p>
+          I build connected systems — from embedded firmware to cloud services and web interfaces.
+        </p>
+        <p>
+          I focus on robust architecture, scalable integrations, and clean implementations that are easy to maintain.
+        </p>
+      </div>
+    </div>
+
+    <div class="avatar">
+      <img src="Max Strang_foto_Henrik_Mill-2.webp" alt="Portrait of Max Strang" />
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2>Skills</h2>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Embedded Systems</h3>
+        <p>Firmware development, RTOS, device communication, hardware integration.</p>
       </div>
 
-      <div class="avatar">
-        <img src="Max Strang_foto_Henrik_Mill-2.webp" alt="Portrait of Max Strang" />
+      <div class="skill-card">
+        <h3>Backend & Cloud</h3>
+        <p>APIs, data pipelines, authentication, scalable cloud architectures.</p>
       </div>
-    </header>
 
-    <footer>
-      © <span id="year"></span> Max Strang
-    </footer>
-  </main>
+      <div class="skill-card">
+        <h3>Frontend</h3>
+        <p>Modern web interfaces, system dashboards, UX-driven design decisions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact</h2>
+
+    <div class="contact">
+      <p>If you'd like to collaborate or just connect:</p>
+
+      <a href="mailto:maxstraang@outlook.com">maxstraang@outlook.com</a><br>
+      <a href="https://www.linkedin.com/in/maxstrang/" target="_blank">
+        LinkedIn
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="year"></span> Max Strang
+  </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+
 </body>
 </html>
