@@ -30,6 +30,52 @@ body{
   overflow-x:hidden;
 }
 
+/* ---------- ORANGE RAIN CSS ONLY ---------- */
+
+.rain-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -2;
+}
+
+.rain-bg::before,
+.rain-bg::after {
+  content: "";
+  position: absolute;
+  inset: -50% 0;
+  background-repeat: repeat;
+  background-size: 3px 120px;
+  opacity: 0.08;
+  animation: fall 4s linear infinite;
+}
+
+.rain-bg::before {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255,122,24,0.4) 0px,
+    rgba(255,122,24,0) 60px
+  );
+  left: 0;
+  animation-duration: 3s;
+}
+
+.rain-bg::after {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255,122,24,0.3) 0px,
+    rgba(255,122,24,0) 80px
+  );
+  left: 25%;
+  animation-duration: 5s;
+}
+
+@keyframes fall {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
 /* ----------- ORANGE RAIN BACKGROUND ----------- */
 
 .rain{
@@ -219,6 +265,7 @@ footer{
 </head>
 
 <body>
+<div class="rain-bg"></div>
 
 <div class="rain" id="rain"></div>
 
