@@ -1,292 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Max Strang</title>
-  <meta name="description" content="Software engineer working with embedded systems and connected products." />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Max Strang</title>
 
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
 
-  <style>
-    :root{
-      --bg: #0b0d10;
-      --fg: #e8eef2;
-      --muted: #9aa6af;
-      --brand: #ff7a18;
-      --maxw: 1100px;
-    }
+<style>
+:root{
+  --bg: #0f1117;
+  --bg-soft: #141824;
+  --fg: #e8eef2;
+  --muted: #9aa6af;
+  --brand: #ff7a18;
+  --card: rgba(255,255,255,0.05);
+  --maxw: 1100px;
+}
 
-    * { box-sizing: border-box; }
+* { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+html { scroll-behavior: smooth; }
 
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--fg);
-      font-family: "Inter", system-ui, sans-serif;
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-    }
+body{
+  margin:0;
+  font-family:"Inter",sans-serif;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255,122,24,0.15), transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(255,122,24,0.08), transparent 40%),
+    var(--bg);
+  color:var(--fg);
+}
 
-    /* ---------- NAV ---------- */
+/* ---------- NAVBAR ---------- */
 
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 20px 40px;
-      background: rgba(11,13,16,0.8);
-      backdrop-filter: blur(8px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 100;
-    }
+nav{
+  position:fixed;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  width:90%;
+  max-width:900px;
+  padding:14px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(20,24,36,0.75);
+  backdrop-filter:blur(14px);
+  border-radius:40px;
+  border:1px solid rgba(255,255,255,0.08);
+  z-index:100;
+}
 
-    nav .logo {
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
+nav .logo{
+  font-weight:700;
+  letter-spacing:-0.02em;
+}
 
-    nav a {
-      text-decoration: none;
-      color: var(--muted);
-      margin-left: 28px;
-      font-weight: 500;
-      transition: .2s ease;
-    }
+nav a{
+  text-decoration:none;
+  color:var(--muted);
+  margin-left:28px;
+  font-weight:500;
+  transition:.2s;
+}
 
-    nav a:hover {
-      color: var(--brand);
-    }
+nav a:hover{
+  color:var(--brand);
+}
 
-    /* ---------- SECTIONS ---------- */
+/* ---------- SECTIONS ---------- */
 
-    section {
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 140px 40px;
-    }
+section{
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:160px 40px 120px 40px;
+}
 
-    h1 {
-      font-size: clamp(42px, 6vw, 72px);
-      line-height: 1.05;
-      margin: 0;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-    }
+h1{
+  font-size:clamp(44px,6vw,68px);
+  margin:0;
+  font-weight:800;
+  letter-spacing:-0.03em;
+}
 
-    h2 {
-      font-size: 32px;
-      margin-bottom: 40px;
-      letter-spacing: -0.02em;
-    }
+h2{
+  font-size:34px;
+  margin-bottom:50px;
+  text-align:center;
+}
 
-    .subtitle {
-      margin-top: 16px;
-      font-size: 20px;
-      font-weight: 500;
-      color: var(--brand);
-    }
+.subtitle{
+  margin-top:18px;
+  font-size:20px;
+  color:var(--brand);
+}
 
-    .intro {
-      margin-top: 40px;
-      font-size: 18px;
-      max-width: 640px;
-    }
+/* ---------- HERO ---------- */
 
-    .intro p {
-      color: var(--muted);
-      margin-bottom: 18px;
-    }
+.hero{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:80px;
+  min-height:100vh;
+}
 
-    /* ---------- HERO LAYOUT ---------- */
+.hero-text{
+  max-width:600px;
+}
 
-    .hero {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 80px;
-      min-height: 100vh;
-      padding-top: 160px;
-    }
+.hero-text p{
+  margin-top:30px;
+  font-size:18px;
+  color:var(--muted);
+  line-height:1.7;
+}
 
-    .avatar {
-      width: 220px;
-      height: 260px;
-      border-radius: 18px;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
+.avatar{
+  width:260px;
+  height:320px;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,0.5);
+}
 
-    .avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      filter: grayscale(10%) contrast(105%);
-    }
+.avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
 
-    /* ---------- SKILLS ---------- */
+/* ---------- SKILLS ---------- */
 
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 40px;
-    }
+.skills{
+  background:var(--bg-soft);
+  border-radius:30px;
+  padding:80px 40px;
+}
 
-    .skill-card {
-      border-top: 2px solid var(--brand);
-      padding-top: 20px;
-    }
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+}
 
-    .skill-card h3 {
-      margin-bottom: 10px;
-    }
+.skill-card{
+  background:var(--card);
+  padding:30px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,0.05);
+  transition:.3s ease;
+}
 
-    .skill-card p {
-      color: var(--muted);
-      font-size: 15px;
-    }
+.skill-card:hover{
+  transform:translateY(-6px);
+  border-color:var(--brand);
+  box-shadow:0 10px 40px rgba(0,0,0,0.4);
+}
 
-    /* ---------- CONTACT ---------- */
+.skill-card h3{
+  margin-bottom:15px;
+}
 
-    .contact a {
-      display: inline-block;
-      margin-top: 10px;
-      text-decoration: none;
-      color: var(--fg);
-      font-weight: 600;
-      position: relative;
-      padding-bottom: 4px;
-    }
+.skill-card p{
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.6;
+}
 
-    .contact a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0%;
-      height: 2px;
-      background: var(--brand);
-      transition: width .25s ease;
-    }
+/* ---------- CONTACT ---------- */
 
-    .contact a:hover {
-      color: var(--brand);
-    }
+.contact{
+  text-align:center;
+}
 
-    .contact a:hover::after {
-      width: 100%;
-    }
+.contact p{
+  color:var(--muted);
+  font-size:18px;
+}
 
-    footer {
-      text-align: center;
-      padding: 60px 20px;
-      color: var(--muted);
-      font-size: 14px;
-    }
+.contact a{
+  display:inline-block;
+  margin-top:20px;
+  padding:14px 28px;
+  border-radius:30px;
+  background:var(--brand);
+  color:#000;
+  font-weight:600;
+  text-decoration:none;
+  transition:.2s;
+}
 
-    @media (max-width: 900px) {
-      .hero {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+.contact a:hover{
+  transform:translateY(-3px);
+}
 
-      nav {
-        padding: 20px;
-      }
+/* ---------- FOOTER ---------- */
 
-      section {
-        padding: 120px 24px;
-      }
-    }
+footer{
+  text-align:center;
+  padding:60px 20px;
+  color:var(--muted);
+  font-size:14px;
+}
 
-  </style>
+@media(max-width:900px){
+  .hero{
+    flex-direction:column;
+    text-align:center;
+  }
+  .avatar{
+    width:200px;
+    height:260px;
+  }
+  section{
+    padding:140px 24px 100px 24px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- NAVIGATION -->
-  <nav>
-    <div class="logo">Max Strang</div>
-    <div>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
+<nav>
+  <div class="logo">Max Strang</div>
+  <div>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>Max Strang</h1>
+    <div class="subtitle">Software Engineer — Västerås</div>
+    <p>
+      I design and build connected systems — from embedded firmware to cloud platforms and modern web interfaces.
+      My focus is robust architecture, scalable integrations, and clean solutions that are easy to maintain.
+    </p>
+  </div>
+
+  <div class="avatar">
+    <img src="Max Strang_foto_Henrik_Mill-2.webp" alt="Portrait of Max Strang">
+  </div>
+</section>
+
+<section id="skills" class="skills">
+  <h2>Skills</h2>
+
+  <div class="skills-grid">
+    <div class="skill-card">
+      <h3>Embedded Systems</h3>
+      <p>Firmware development, RTOS, communication protocols, and hardware integration.</p>
     </div>
-  </nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div>
-      <h1>Max Strang</h1>
-      <div class="subtitle">Software Engineer — Västerås</div>
-
-      <div class="intro">
-        <p>
-          I build connected systems — from embedded firmware to cloud services and web interfaces.
-        </p>
-        <p>
-          I focus on robust architecture, scalable integrations, and clean implementations that are easy to maintain.
-        </p>
-      </div>
+    <div class="skill-card">
+      <h3>Backend & Cloud</h3>
+      <p>API design, scalable services, authentication systems and data pipelines.</p>
     </div>
 
-    <div class="avatar">
-      <img src="Max Strang_foto_Henrik_Mill-2.webp" alt="Portrait of Max Strang" />
+    <div class="skill-card">
+      <h3>Frontend Development</h3>
+      <p>Modern web applications, dashboards and user-centered interfaces.</p>
     </div>
-  </section>
 
-  <!-- SKILLS -->
-  <section id="skills">
-    <h2>Skills</h2>
-
-    <div class="skills-grid">
-      <div class="skill-card">
-        <h3>Embedded Systems</h3>
-        <p>Firmware development, RTOS, device communication, hardware integration.</p>
-      </div>
-
-      <div class="skill-card">
-        <h3>Backend & Cloud</h3>
-        <p>APIs, data pipelines, authentication, scalable cloud architectures.</p>
-      </div>
-
-      <div class="skill-card">
-        <h3>Frontend</h3>
-        <p>Modern web interfaces, system dashboards, UX-driven design decisions.</p>
-      </div>
+    <div class="skill-card">
+      <h3>System Architecture</h3>
+      <p>Designing end-to-end solutions connecting devices, services and interfaces.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <h2>Contact</h2>
+<section id="contact" class="contact">
+  <h2>Contact</h2>
+  <p>Interested in collaborating or just want to connect?</p>
+  <a href="mailto:maxstraang@outlook.com">Get in touch</a>
+</section>
 
-    <div class="contact">
-      <p>If you'd like to collaborate or just connect:</p>
+<footer>
+  © <span id="year"></span> Max Strang
+</footer>
 
-      <a href="mailto:maxstraang@outlook.com">maxstraang@outlook.com</a><br>
-      <a href="https://www.linkedin.com/in/maxstrang/" target="_blank">
-        LinkedIn
-      </a>
-    </div>
-  </section>
-
-  <footer>
-    © <span id="year"></span> Max Strang
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
