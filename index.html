@@ -4,330 +4,193 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Max Strang</title>
-  <meta name="description" content="Personal webpage for Max Strang — software engineer focusing on embedded programming, full‑stack development, and device-to-cloud systems." />
+  <meta name="description" content="Personal webpage for Max Strang — software engineer focusing on embedded programming, full-stack development, and device-to-cloud systems." />
 
-  <!-- Font (no blocking: preconnect + stylesheet) -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
 
   <style>
-    /* ========== Theme tokens ========== */
     :root{
-      --bg: #0b0d10;            /* page background (dark) */
-      --fg: #e8eef2;            /* foreground text */
-      --muted: #b7c3cc;         /* secondary text */
-      --card: #0e1116;          /* base card */
-      --brand: #ff7a18;         /* orange accent */
-      --brand-2: #0ea5e9;       /* cyan accent for links/hover */
-      --link: #60a5fa;
-
-      --radius: 16px;
-      --shadow: 0 12px 40px rgba(0,0,0,.35);
-      --space: clamp(14px, 1.6vw, 20px);
-      --maxw: 720px;
-
-      /* Animation controls (tweak to taste) */
-      --glow-opacity: .85;       /* edge glow strength (0–1) */
-      --glow-size: 32px;        /* outward glow size */
-      --breath-strength: 10%;   /* how much the orange tint drifts */
-      --breath-duration: 16s;   /* slow, subtle cycle */
-      --shine-duration: 7s;     /* edge shine sweep duration */
-      --sweep-enabled: 1;       /* 1 = on, 0 = off (diagonal sweep) */
-    }
-
-    @media (prefers-color-scheme: light) {
-      :root{
-        --bg: #f7fafc;
-        --fg: #0b0d10;
-        --muted: #38434a;
-        --card: #ffffff;
-        --shadow: 0 12px 40px rgba(15,23,42,.08);
-      }
+      --bg: #0b0d10;
+      --fg: #e8eef2;
+      --muted: #9aa6af;
+      --brand: #ff7a18;
+      --maxw: 1100px;
     }
 
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
-      background:
-        radial-gradient(1200px 600px at 80% -100px, rgba(14,165,233,.18), transparent 60%),
-        radial-gradient(900px 500px at -20% 120%, rgba(255,122,24,.12), transparent 60%),
-        var(--bg);
+      background: var(--bg);
       color: var(--fg);
-      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      line-height: 1.6;
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
     }
 
     .wrap {
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: calc(var(--space) * 2);
-    }
-
-    /* ========== Card with animated tint & edge shine ========== */
-    .card {
-        position: relative;
-        width: 100%;
-        max-width: var(--maxw);
-        border-radius: var(--radius);
-        padding: clamp(20px, 4vw, 42px);
-        box-shadow: var(--shadow);
-        isolation: isolate;
-
-        /* Animated glow gradient background */
-        background: linear-gradient(
-            135deg,
-            hsl(220 30% 10%) 0%,
-            hsl(220 35% 14%) 40%,
-            hsl(28 90% 22%) 70%,
-            hsl(220 35% 12%) 100%
-        );
-        background-size: 200% 200%;
-        animation: card-glow-shift 18s ease-in-out infinite;
-
-        border: 1px solid hsl(28 100% 55% / 0.22);
-
-        box-shadow:
-            0 0 28px hsl(28 100% 55% / 0.10),
-            inset 0 1px 0 hsl(28 100% 70% / 0.18),
-            inset 0 -8px 32px rgba(0,0,0,.35);
-
-        backdrop-filter: blur(6px) saturate(140%);
-        }
-
-
-    /* Soft edge glow that subtly travels around the card border */
-    .card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-
-  border: 2px solid var(--brand);
-  box-shadow:
-    0 0 8px var(--brand),
-    0 0 18px color-mix(in oklab, var(--brand) 70%, transparent),
-    inset 0 0 12px color-mix(in oklab, var(--brand) 35%, transparent);
-
-  opacity: .9;
-}
-
-
-    /* Gentle outward glow */
-    .card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      box-shadow: 0 0 var(--glow-size) color-mix(in oklab, var(--brand) 45%, transparent);
-      opacity: .35;
-      pointer-events: none;
-      mix-blend-mode: screen;
-    }
-
-    /* Optional diagonal soft sweep highlight on top */
-    .sweep {
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      background:
-        linear-gradient(130deg,
-          transparent 25%,
-          rgba(255,255,255, .06) 38%,
-          rgba(255,255,255, .09) 45%,
-          rgba(255,255,255, .06) 52%,
-          transparent 65%);
-      filter: blur(1px);
-      opacity: calc(.9 * var(--sweep-enabled));
-      mix-blend-mode: screen;
-      animation: sweep 12s ease-in-out infinite;
-      pointer-events: none;
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 120px 40px;
     }
 
     header {
-      display: grid;
-      grid-template-columns: 96px 1fr;
-      gap: clamp(16px, 2.2vw, 28px);
-      align-items: center;
-      margin-bottom: clamp(10px, 1.4vw, 16px);
-      position: relative;
-      z-index: 1; /* above effects */
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 80px;
     }
-    .avatar {
-      width: 96px; height: 96px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 3px solid color-mix(in oklab, var(--brand) 60%, transparent);
-      box-shadow: 0 6px 18px rgba(14,165,233,.25);
-      background: #111;
+
+    .title-block {
+      max-width: 620px;
     }
-    .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     h1 {
-      font-size: clamp(26px, 4.2vw, 36px);
-      line-height: 1.15;
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1.05;
       margin: 0;
-      letter-spacing: -0.02em;
+      font-weight: 800;
+      letter-spacing: -0.03em;
     }
+
     .subtitle {
-      color: var(--muted);
+      margin-top: 16px;
+      font-size: 20px;
       font-weight: 500;
-      letter-spacing: .2px;
+      color: var(--brand);
     }
+
     .intro {
-      position: relative;
-      z-index: 1;
-      margin: 18px 0 8px;
-      color: color-mix(in oklab, var(--fg) 92%, transparent);
-      font-size: clamp(16px, 1.4vw, 18px);
+      margin-top: 40px;
+      font-size: 18px;
+      color: var(--fg);
     }
-    .intro p { margin: 0 0 12px; }
+
+    .intro p {
+      margin: 0 0 18px;
+      color: var(--muted);
+    }
+
+    .avatar {
+      width: 220px;
+      height: 260px;
+      border-radius: 18px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(10%) contrast(105%);
+    }
 
     .actions {
-      position: relative;
-      z-index: 1;
+      margin-top: 40px;
       display: flex;
+      gap: 24px;
       flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 18px;
     }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 16px;
-      border-radius: 12px;
-      background: color-mix(in oklab, var(--brand-2) 18%, var(--card));
-      border: 1px solid color-mix(in oklab, var(--brand-2) 40%, transparent);
-      color: var(--fg);
-      text-decoration: none;
-      font-weight: 600;
-      transition: .15s ease;
-    }
-    .btn:hover {
-      transform: translateY(-2px);
-      background: color-mix(in oklab, var(--brand-2) 28%, var(--card));
-      box-shadow: 0 8px 24px rgba(14,165,233,.25);
-      border-color: color-mix(in oklab, var(--brand-2) 60%, transparent);
-    }
-    .btn svg { width: 20px; height: 20px; flex: none; }
 
-    .contact {
-      position: relative;
-      z-index: 1;
-      margin-top: 8px;
-      color: var(--muted);
+    .btn {
+      text-decoration: none;
+      color: var(--fg);
+      font-weight: 600;
       font-size: 15px;
+      position: relative;
+      padding-bottom: 4px;
+      transition: .2s ease;
+    }
+
+    .btn::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--brand);
+      transition: width .25s ease;
+    }
+
+    .btn:hover {
+      color: var(--brand);
+    }
+
+    .btn:hover::after {
+      width: 100%;
     }
 
     footer {
-      position: relative;
-      z-index: 1;
-      margin-top: 22px;
-      font-size: 13px;
+      margin-top: 120px;
+      font-size: 14px;
       color: var(--muted);
     }
 
-    @media (max-width: 520px) {
-      header { grid-template-columns: 72px 1fr; }
-      .avatar { width: 72px; height: 72px; }
+    @media (max-width: 900px) {
+      header {
+        flex-direction: column;
+        gap: 60px;
+      }
+
+      .avatar {
+        width: 180px;
+        height: 220px;
+      }
+
+      .wrap {
+        padding: 80px 28px;
+      }
     }
 
-    /* ========== Animations ========== */
-    @keyframes breath {
-      0%   { background: linear-gradient(135deg,
-               color-mix(in oklab, var(--card) 88%, black) 0%,
-               color-mix(in oklab, var(--card) 88%, black) 40%,
-               color-mix(in oklab, var(--brand) calc(6% + var(--breath-strength)), var(--card)) 100% ); }
-      50%  { background: linear-gradient(135deg,
-               color-mix(in oklab, var(--card) 88%, black) 0%,
-               color-mix(in oklab, var(--card) 88%, black) 40%,
-               color-mix(in oklab, var(--brand) calc(3% + var(--breath-strength)/2), var(--card)) 100% ); }
-      100% { background: linear-gradient(135deg,
-               color-mix(in oklab, var(--card) 88%, black) 0%,
-               color-mix(in oklab, var(--card) 88%, black) 40%,
-               color-mix(in oklab, var(--brand) calc(6% + var(--breath-strength)), var(--card)) 100% ); }
-    }
-
-    @keyframes edge-rotate {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
-    }
-
-    @keyframes sweep {
-      0%   { transform: translateX(-15%) translateY(-10%) rotate(0.001deg); opacity: calc(.85 * var(--sweep-enabled)); }
-      50%  { transform: translateX(15%) translateY(10%)  rotate(0.001deg); opacity: calc(.55 * var(--sweep-enabled)); }
-      100% { transform: translateX(-15%) translateY(-10%) rotate(0.001deg); opacity: calc(.85 * var(--sweep-enabled)); }
-    }
-
-    /* Accessibility: reduce/disable motion */
-    @media (prefers-reduced-motion: reduce) {
-      .card,
-      .card::before,
-      .sweep { animation: none !important; }
-    }
   </style>
 </head>
 
 <body>
   <main class="wrap">
-    <section class="card" aria-label="Profile card with subtle animated tint and edge shine">
-      <div class="sweep" aria-hidden="true"></div>
+    <header>
+      <div class="title-block">
+        <h1>Max Strang</h1>
+        <div class="subtitle">Software Engineer — Västerås</div>
 
-      <header>
-        <div class="avatar" aria-hidden="true">
-          <!-- Replace with your real image -->
-          <img src="Max Strang_foto_Henrik_Mill-2.webp" alt="Portrait of Max Strang" width="96" height="96" />
+        <div class="intro">
+          <p>
+            I'm a software developer at Knightec Group, working primarily with embedded software and connected systems.
+          </p>
+          <p>
+            My work spans low-level device programming, backend services, and web interfaces — building cohesive products from hardware to cloud.
+          </p>
+          <p>
+            I focus on robust architecture, thoughtful abstractions, and scalable systems that are easy to understand and maintain.
+          </p>
         </div>
-        <div class="title">
-          <h1>Max Strang</h1>
-          <div class="subtitle">Software Engineer — Västerås</div>
+
+        <div class="actions">
+          <a class="btn" href="https://www.linkedin.com/in/maxstrang/" target="_blank" rel="noopener noreferrer">
+            LinkedIn
+          </a>
+
+          <a class="btn" href="mailto:maxstraang@outlook.com">
+            Email
+          </a>
         </div>
-      </header>
-
-      <div class="intro" id="intro">
-        <p>I'm a software developer @ Knightec Group, working primarily with embedded software and connected systems, turning hardware and cloud services into cohesive, usable products.</p>
-        <p>My day-to-day work spans everything from low-level device code to backend APIs and web frontends, depending on what the system needs most.</p>
-        <p>I like designing end-to-end solutions where devices, services, and interfaces work together smoothly and securely.</p>
-        <p>I focus on robustness and simplicity, aiming for implementations that are easy to understand, test, and maintain.</p>
-        <p>I care about solid architecture, thoughtful abstractions, and workflows that make collaboration and deployment straightforward.</p>
-        <p>Much of my recent work involves connectivity, data flows from edge devices, and scalable service integrations.</p>
-        <p>If you're curious about my work or want to get in touch, check out the links below.</p>
-
       </div>
 
-      <div class="actions" aria-label="Quick links">
-        <!-- LinkedIn -->
-        <a class="btn" href="https://www.linkedin.com/in/maxstrang/" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn profile">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.447-2.136 2.944v5.662H9.352V9h3.414v1.561h.049c.476-.9 1.637-1.852 3.37-1.852 3.603 0 4.268 2.372 4.268 5.457v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.114 20.452H3.556V9h3.558v11.452z"/>
-          </svg>
-          LinkedIn
-        </a>
-
-        <!-- Email -->
-        <a class="btn" href="mailto:maxstraang@outlook.com" aria-label="Send me an email">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <rect x="3" y="6" width="18" height="12" rx="2"></rect>
-            <path d="M3 7l9 6 9-6"></path>
-        </svg>
-
-          Email
-        </a>
+      <div class="avatar">
+        <img src="Max Strang_foto_Henrik_Mill-2.webp" alt="Portrait of Max Strang" />
       </div>
+    </header>
 
-      <div class="contact" aria-label="Contact">
-        maxstraang@outlook.com
-      </div>
-
-      <footer aria-hidden="true">© <span id="year"></span> Max Strang</footer>
-    </section>
+    <footer>
+      © <span id="year"></span> Max Strang
+    </footer>
   </main>
 
   <script>
-    // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
