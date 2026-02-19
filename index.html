@@ -261,6 +261,95 @@ footer{
     text-align:center;
   }
 }
+/* ----------- CONTACT ----------- */
+
+.contact{
+  margin-top:140px;
+  padding-top:60px;
+}
+
+.contact h2{
+  text-align:center;
+  font-size:34px;
+  margin-bottom:50px;
+}
+
+.contact-wrapper{
+  max-width:700px;
+  margin:0 auto;
+  background:rgba(255,255,255,0.04);
+  padding:50px;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.06);
+  backdrop-filter:blur(20px);
+}
+
+.form-group{
+  margin-bottom:20px;
+}
+
+input, textarea{
+  width:100%;
+  padding:14px 16px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.08);
+  background:rgba(255,255,255,0.03);
+  color:var(--fg);
+  font-family:inherit;
+  font-size:14px;
+  transition:.2s;
+}
+
+input:focus, textarea:focus{
+  outline:none;
+  border-color:var(--brand);
+  box-shadow:0 0 0 2px rgba(255,122,24,0.2);
+}
+
+button{
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  border:none;
+  background:var(--brand);
+  color:#fff;
+  font-weight:600;
+  font-size:15px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 30px rgba(255,122,24,0.4);
+}
+
+.linkedin-box{
+  text-align:center;
+  margin-top:40px;
+}
+
+.linkedin-box p{
+  color:var(--muted);
+  margin-bottom:15px;
+}
+
+.linkedin-btn{
+  display:inline-block;
+  padding:12px 22px;
+  border-radius:30px;
+  background:#0a66c2;
+  color:#fff;
+  text-decoration:none;
+  font-weight:500;
+  transition:.3s;
+}
+
+.linkedin-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 30px rgba(10,102,194,0.4);
+}
+
 </style>
 </head>
 
@@ -273,8 +362,11 @@ footer{
   <div class="logo">Max Strang</div>
   <div>
     <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+    <a href="https://www.linkedin.com/in/maxstrang/" target="_blank">LinkedIn</a>
   </div>
 </nav>
+
 
 <section>
   <div class="hero-wrapper">
@@ -311,6 +403,34 @@ footer{
     </div>
   </div>
 </section>
+<div id="contact" class="contact">
+  <h2>Contact</h2>
+
+  <div class="contact-wrapper">
+    <form>
+      <div class="form-group">
+        <input type="text" placeholder="Your Name" required>
+      </div>
+
+      <div class="form-group">
+        <input type="email" placeholder="Your Email" required>
+      </div>
+
+      <div class="form-group">
+        <textarea rows="5" placeholder="Your Message" required></textarea>
+      </div>
+
+      <button type="submit">Send Message</button>
+    </form>
+
+    <div class="linkedin-box">
+      <p>Or connect with me on LinkedIn</p>
+      <a href="https://www.linkedin.com/in/maxstrang/" target="_blank" class="linkedin-btn">
+        Visit my LinkedIn
+      </a>
+    </div>
+  </div>
+</div>
 
 <footer>
   © <span id="year"></span> Max Strang
